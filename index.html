@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+  <link href="assets/favicon.ico" rel="shortcut icon" />
+  <link rel="stylesheet" href="./assets/fonts/owfont-master/css/owfont-regular.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>momentum</title>
+</head>
+<body>
+  <header class="header">
+    <div class="player visible" data-name="player">
+      <audio src="./assets/sounds/Aqua Caelestis.mp3"></audio>
+      <div class="play-item-name"></div>
+      <div class="player-controls">
+        <button class="play-prev player-icon"></button>
+        <button class="play player-icon"></button>
+        <button class="play-next player-icon"></button>
+        <input class="audio-progress" name="progress" type="range" value="0" min="0" max="100" step="1" />
+        <div class="current-time-box"></div>
+        <button class="sound-on-btn player-icon"></button>
+        <input class="audio-volume" name="volume" type="range" value="0" min="0" max="100" step="1" />
+      </div>
+      <ul class="play-list">
+      </ul>
+    </div>
+    <div class="weather visible" data-name="weather">
+      <input type="text" class="city" placeholder="[Enter city]">
+      <i class="weather-icon owf"></i>
+      <div class="weather-error"></div>
+      <div class="description-container">
+        <span class="temperature"></span>
+        <span class="weather-description"></span>
+      </div>
+      <div class="weather-descr-item"><span id="wind">Wind speed: </span>
+        <p class="wind"></p><span id="unit">%</span>
+      </div>
+      <div class="weather-descr-item"><span id="humidity">Humidity: </span>
+        <p class="humidity"></p>
+        <span id="unit">m/s</span>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="slider-icons">
+      <button class="slide-prev slider-icon" onclick="go_to_left()"></button>
+      <button class="slide-next slider-icon" onclick="go_to_right()"></button>
+    </div>
+    <time class="time visible" data-name="time"></time>
+    <date class="date visible" data-name="date"></date>
+    <div class="greeting-container visible" data-name="greeting">
+      <span class="greeting"></span>
+      <input type="text" class="name" placeholder="[Enter name]"/>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="quotes visible" data-name="quotes">
+        <button class="change-quote"></button>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
+    </div>
+    <div class="footer-description">
+      <div class="settings">
+        <div class="overlay"></div>
+        <div class="settings-wrapper">
+          <div class="settings-general">
+            <div class="settings-list">
+              <h3 class="settings-general-item active" id="general">General</h3>
+              <h3 class="settings-general-item" id="photos">Photos</h3>
+              </div>
+              <div class="languages">
+                <h3 class="settings-general-item" id="language">Languages</h3>
+                <div class="language-item">
+                  <p class="langeage">En</p>
+                  <label class="switch">
+                    <input class="english-input" type="checkbox" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+                <div class="language-item">
+                  <p class="langeage">Ru</p>
+                  <label class="switch">
+                    <input class="russian-input" type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+              </div>
+              <div class="settings-content">
+            <h3 class="settings-title" id="general-next">General</h3>
+            <p class="settings-suptitle" id="custom">Customize your dashboard</p>
+            <h4 class="settings-secondtitle" id="hide">Hide</h4>
+            <div class="settings-item">
+              <div class="settings-item-title" id="st-weather">Weather</div>
+              <label class="switch">
+                    <input class="weather-input range" type="checkbox">
+                    <span class="slider round"></span>
+                    </label>
+                    </div>
+                    <div class="settings-item">
+                      <div class="settings-item-title" id="audio">Audio player</div>
+                      <label class="switch">
+                      <input class="audio-input range" type="checkbox">
+                      <span class="slider round"></span>
+                      </label>
+                      </div>
+                      <div class="settings-item">
+                        <div class="settings-item-title" id="st-time">Time</div>
+                        <label class="switch">
+                        <input class="time-input range" type="checkbox">
+                        <span class="slider round"></span>
+                        </label>
+                        </div>
+                        <div class="settings-item">
+                          <div class="settings-item-title" id="st-date">Date</div>
+                          <label class="switch">
+                      <input class="date-input range" type="checkbox">
+                      <span class="slider round"></span>
+                      </label>
+                      </div>
+                      <div class="settings-item">
+                        <div class="settings-item-title" id="st-greeting">Greeting</div>
+                        <label class="switch">
+                        <input class="greeting-input range" type="checkbox">
+                        <span class="slider round"></span>
+                        </label>
+                        </div>
+                        <div class="settings-item">
+                          <div class="settings-item-title" id="st-quotes">Quotes</div>
+                          <label class="switch">
+                        <input class="quotes-input range" type="checkbox">
+                        <span class="slider round"></span>
+                        </label>
+                        </div>
+                        </div>
+                        <div class="photo-content none">
+                  <h3 class="settings-title" id="photos-next">Photos</h3>
+                  <p class="settings-suptitle" id="custom-next">Choose you background</p>
+                  <div class="photo-content-item">
+                    <p class="photo-content-item-title">Unsplash</p>
+                    <label class="switch">
+                      <input class="unsplash-input ptoto-input" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div class="photo-content-item">
+                    <p class="photo-content-item-title">GitHub</p>
+                    <label class="switch">
+                      <input class="github-input ptoto-input" type="checkbox" checked>
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <div class="photo-content-item">
+                    <p class="photo-content-item-title">Flickr</p>
+                    <label class="switch">
+                      <input class="flickr-input ptoto-input" type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                  </div>
+                  <p class="tags" id="tags">Tags</p>
+                  <label for="">
+                    <input class="tag-input" type="text" placeholder="[enter tag]">
+                  </label>
+                </div>
+                </div>
+                <button class="settings-btn player-icon"></button>
+                </div>
+      <p class="year">2021</p>
+      <p class="link"><a href="https://rs.school/">Rs School</a></p>
+      <p class="link"><a href="https://github.com/psycho0sis">Github</a></p>
+    </div>
+  </footer>
+  <script src="data.json"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
